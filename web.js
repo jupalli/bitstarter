@@ -12,6 +12,7 @@ var buf;
 fs.readFile('index.html', function (err, data) {
   if (err) throw err;
   console.log(data);
+  buf = new Buffer(data);
 });
 
 var port = process.env.PORT || 5000;
