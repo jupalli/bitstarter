@@ -17,7 +17,8 @@ fs.readFile('index.html', function (err, data) {
 });
 
 app.get('/', function(request, response) {
-  response.send('Hello World3!'+buf.length);
+  //response.send('Hello World3!'+buf.length);
+   response.send(buf.toString());
 });
 
 
