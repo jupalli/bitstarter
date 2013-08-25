@@ -2,25 +2,25 @@ var express = require('express');
 var app = express();
 app.use(express.logger());
 
-/*app.get('/', function(request, response) {
-  response.send('Hello World2!');
-});
-*/
-
+var buf;// = new Buffer("Hello World", "utf-8");
 var fs = require('fs');
-var buf;
 
 fs.readFile('index.html', function (err, data) {
-  if (err) throw err;
-  console.log(data);
-  buf = new Buffer(data);
+//response.send("Reading the file");
+if (err) 
+{
+console.log("Error reading the file");
+}
+else
+{
+buf = new Buffer(data, "utf-8");
+} 
 });
 
 app.get('/', function(request, response) {
-  //response.send('Hello World3!'+buf.length);
-   response.send(buf.toString());
+//  response.send('Hello World2!');
+  response.send(buf.toString());
 });
-
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
